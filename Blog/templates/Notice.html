@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Notice
+{% endblock %} 
+
+{% block header %}
+<h1> KUCC Notice Board</h1> 
+{% endblock %} 
+
+{% block nav %}
+<a class="nav-link " href="{% url 'home' %}">home</a>
+<a class="nav-link" href="{% url 'Segments' %}">Segments</a>
+<a class="nav-link disabled" href="{% url 'notice' %}">Notice</a>
+<a class="nav-link" href="{% url 'book' %}">Library</a>
+<a class="nav-link" href="{% url 'about' %}">About Us</a>
+{% if user.is_authenticated %}
+<a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+<p>Hello, {{user.first_name}}</p>
+{% else %}
+<a class="nav-link" href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+{% endblock %} 
+
+{% block bodyleft %}
+
+{% for notice in NoticeContent %}
+
+
+            {% if notice.NoticeImage %}
+                 <img src="{notice.NoticeImage.url}" class="mx-auto d-block" style="width:50%"> 
+                 <br>
+            {% endif %}
+    <h2>{{ notice.NoticeTitle }}</h2>
+    <i>{{notice.NoticeDate}}</i> <br>
+    <p>{{ notice.NoticeDescription }}</p>
+
+
+{% endfor %}
+{% endblock %} 
+
+{% block footer %}
+All Rights Reserved To Khulna University Career Club
+{% endblock %} 

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}
+home
+{% endblock %} 
+
+{% block header %}
+<h2>Khulna University Career Club</h2>
+<i>Intensify Your Ability Towards Destination</i>
+
+{% endblock %} 
+
+{% block nav %}
+
+    <a class="nav-link disabled " href="{% url 'home' %}">home</a>
+
+
+    <a class="nav-link" href="{% url 'Segments' %}">Segments</a>
+
+
+    <a class="nav-link" href="{% url 'notice' %}">Notice</a>
+
+    <a class="nav-link" href="{% url 'book' %}">Library</a>
+
+    <a class="nav-link" href="{% url 'about' %}">About Us</a>
+{% if user.is_authenticated %}
+
+<a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+<p>Hello, {{user.first_name}}</p>
+{% else %}
+<a class="nav-link" href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+{% endblock %} 
+
+{% block bodyright %}
+<h4>Some Important Links</h4>
+  {% for web in link%}
+  
+ 
+  <a href="{{web.Link}}">{{web.LinkName}}</a>
+  <br> 
+  {% endfor %}
+{% endblock %} 
+{% block bodyleft%}
+{% for post in homepost %}
+<h2>{{post.PostTitle}}</h2>
+<h6><i>{{post.time}}</i></h6> <br>
+{% if post.PostImage %}
+<img src="{{post.PostImage.url}}"alt="Image" style="width:100%">
+<br>
+{% endif %}
+<br>
+
+<p>{{post.Description}}</p>
+<br> <br>
+{%endfor%}
+
+
+{% endblock%}
+{% block left %}
+{%for ba in back %}
+{% if ba.BackVisibility  %}
+<h3><i>{{ba.BackUser}}</i></h3><br>
+<h5><i>{{ba.BackDate}}</i></h5><br>
+<p>{{ba.BackIntro}}</p><br>
+<p>{{ba.BackDescription}}</p><br><br>
+<i>{{ba.BackUserDiscipline}}</i><br>
+<i>{{ba.BackUniversity}}</i><br>
+
+{% endif %}
+{%endfor%}
+
+{% endblock %} 
+
+{% block footer %}
+All Rights Reserved To Khulna University Career Club
+{% endblock %} 

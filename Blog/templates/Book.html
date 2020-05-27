@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block title %}
+Library 
+{% endblock %} 
+
+{% block header %}
+<h3>Welcome to our Library</h3>
+{% endblock %} 
+
+{% block nav %}
+<a class="nav-link " href="{% url 'home' %}">home</a>
+<a class="nav-link" href="{% url 'Segments' %}">Segments</a>
+<a class="nav-link" href="{% url 'notice' %}">Notice</a>
+<a class="nav-link disabled" href="{% url 'book' %}">Library</a>
+<a class="nav-link" href="{% url 'about' %}">About Us</a>
+{% if user.is_authenticated %}
+<a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+<p>Hello, {{user.first_name}}</p>
+{% else %}
+<a class="nav-link" href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %} 
+
+{% block bodyleft %}
+<h2>Book Shelf</h2>
+  <br><br>           
+  <table class="table">
+    <thead>
+      <tr>
+        <th>BookName</th>
+        <th>Writer</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for pdf in book%}
+      <tr>
+          
+        <td><a href="{{pdf.BookLink}}">{{pdf.BookName}}</a></td>
+        <td>{{pdf.Writer}}</td>
+        <td>{{pdf.BookCategory}}</td>
+        
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+
+{% endblock %} 
+
+{% block footer %}
+All Rights Reserved To Khulna University Career Club
+{% endblock %} 

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>  
+    {% block title %}
+  
+    {% endblock %} 
+</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static 'CSS/bootstrap.min.css'%}">
+  <script src="{% static 'JS/jquery.min.js'%}" ></script>
+  <script src="{% static 'JS/bootstrap.min.js'%}" ></script>
+  <script src="{% static 'JS/bootstrap.min.js.map'%}" ></script>
+ 
+ 
+  
+
+  
+  </head>
+  <body>
+  
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    {% block header %}
+  
+    {% endblock %} 
+  </div>
+  
+  <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
+   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        {% block nav %}
+       
+        {% endblock %} 
+      </ul>
+    </div>  
+  </nav>
+  
+  <div class="container" style="margin-top:30px">
+    <div class="row">
+      <div class="col-sm-3">
+        {% block left %}
+  
+        {% endblock %} 
+         
+       
+      </div>
+      <div class="col-sm-6">
+        {% block bodyleft %}
+  
+        {% endblock %} 
+         
+       
+      </div>
+      <div class="col-sm-3">
+        {% block bodyright %}
+  
+        {% endblock %} 
+         
+      </div>
+    </div>
+   
+  </div>
+  
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    {% block footer %}
+  
+    {% endblock %} 
+  </div>
+  
+  </body>
+  </html>

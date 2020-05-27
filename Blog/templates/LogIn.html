@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login 
+{% endblock %} 
+
+{% block header %}
+<h1>Welcome to KUCC</h1> 
+{% endblock %} 
+
+{% block nav %}
+<a class="nav-link " href="{% url 'home' %}">home</a>
+<a class="nav-link" href="{% url 'Segments' %}">Segments</a>
+<a class="nav-link" href="{% url 'notice' %}">Notice</a>
+<a class="nav-link" href="{% url 'book' %}">Library</a>
+<a class="nav-link" href="{% url 'about' %}">About Us</a>
+<a class="nav-link disabled" href="{% url 'login' %}">Log In</a>
+
+{% endblock %} 
+
+{% block bodyleft %}
+<h2>Log In </h2>
+  <form action="login" method="POST" >
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="email">User Name:</label>
+      <input type="text" class="form-control" id="email" placeholder="Username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div>
+    {% for message in messages%}
+    <h3>{{message}}</h3>
+    {%endfor%}
+</div>
+  <br><br><br><br>
+  <p>Don't have an account?? <br>Please click <a href="{% url 'register' %}">here</a></p>
+{% endblock %} 
+
+{% block footer %}
+All Rights Reserved To Khulna University Career Club
+{% endblock %} 
